@@ -1,5 +1,8 @@
 package accounts;
 
+/**
+ * @author Arkirka
+ */
 public class UserProfile {
     private final String login;
     private final String password;

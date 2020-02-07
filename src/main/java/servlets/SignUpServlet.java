@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Arkirka
+ */
 public class SignUpServlet extends HttpServlet {
     private final AccountsService accountsService;
     private UserProfile userProfile;

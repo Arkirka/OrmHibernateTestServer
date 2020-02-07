@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 /**
  * @author Arkirka
- *
  */
 public class UsersDAO {
 

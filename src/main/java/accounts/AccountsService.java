@@ -3,6 +3,9 @@ package accounts;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Arkirka
+ */
 public class AccountsService  {
     private final Map<String, UserProfile> loginToProfile;
 

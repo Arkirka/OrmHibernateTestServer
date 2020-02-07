@@ -2,7 +2,6 @@ package dbService.dataSets;
 
 /**
  * @author Arkirka
- *
  */
 @SuppressWarnings("UnusedDeclaration")
 public class UsersDataSet {
