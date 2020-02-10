@@ -25,7 +25,7 @@ public class Main {
 
         dbService.printConnectInfo();
         try {
-            long userId = dbService.addUser("tully");
+            long userId = dbService.addUser("tully", "tully");
             System.out.println("Added user id: " + userId);
 
             UsersDataSet dataSet = dbService.getUser(userId);
@@ -36,8 +36,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        accountService.addNewUser(new UserProfile("admin"));
-        accountService.addNewUser(new UserProfile("test"));
+        accountService.addNewUser(new UserProfile("admin", "admin"));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");

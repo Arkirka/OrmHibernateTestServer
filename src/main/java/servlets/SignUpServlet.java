@@ -30,7 +30,7 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        userProfile = new UserProfile(request.getParameter("login"));
+        userProfile = new UserProfile(request.getParameter("login"), request.getParameter("password"));
         accountsService.addNewUser(userProfile);
     }
 }

@@ -27,12 +27,12 @@ public class DBService {
         }
     }
 
-    public long addUser(String name) throws DBException {
+    public long addUser(String name, String password) throws DBException {
         try {
             connection.setAutoCommit(false);
             UsersDAO dao = new UsersDAO(connection);
             dao.createTable();
-            dao.insertUser(name);
+            dao.insertUser(name, password);
             connection.commit();
             return dao.getUserId(name);
         } catch (SQLException e) {
@@ -67,31 +67,6 @@ public class DBService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    @SuppressWarnings("UnusedDeclaration")
-    public static Connection getMysqlConnection() {
-        try {
-            DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
-
-            StringBuilder url = new StringBuilder();
-
-            url.
-                    append("jdbc:mysql://").        //db type
-                    append("localhost:").           //host name
-                    append("3306/").                //port
-                    append("db_example?").          //db name
-                    append("user=tully&").          //login
-                    append("password=tully");       //password
-
-            System.out.println("URL: " + url + "\n");
-
-            Connection connection = DriverManager.getConnection(url.toString());
-            return connection;
-        } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public static Connection getH2Connection() {

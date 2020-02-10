@@ -28,9 +28,9 @@ public class SignInServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
+        String pass = request.getParameter("password");
 
-        if (login == null) {
+        if (login == null | pass == null) {
             response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
@@ -42,9 +42,14 @@ public class SignInServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().println("Unuthorized");
             return;
-        } else {
+        } else if (request.getParameter("password").equals(profile.getPassword())) {
+            response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("Authorized: " + login);
+        } else {
+            response.setContentType("text/html;charset=utf-8");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().println("Wrong password");
         }
 
         Gson gson = new Gson();

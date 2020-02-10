@@ -31,12 +31,13 @@ public class UsersDAO {
         });
     }
 
-    public void insertUser(String name) throws SQLException {
-        executor.execUpdate("insert into users (user_name) values ('" + name + "')");
+    public void insertUser(String name, String password) throws SQLException {
+        executor.execUpdate("insert into users (user_name, user_password) values ('" + name + "', '" + password + "')");
     }
 
     public void createTable() throws SQLException {
-        executor.execUpdate("create table if not exists users (id bigint auto_increment, user_name varchar(256), primary key (id))");
+        executor.execUpdate("create table if not exists users \n" +
+                "(id bigint auto_increment, user_name varchar(256),user_password varchar(256), primary key (id))");
     }
 
     public void dropTable() throws SQLException {
